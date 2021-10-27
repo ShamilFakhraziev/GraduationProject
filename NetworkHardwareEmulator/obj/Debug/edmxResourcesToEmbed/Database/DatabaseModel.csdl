@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CollegeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LaboratoryWork">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="SuccessRateLab" Type="Int32" />
+    <Property Name="DateWorkEnding" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_LaboratoryWorks_Users" FromRole="LaboratoryWork" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LaboratoryWork" Relationship="Self.FK_LaboratoryWorks_Users" FromRole="User" ToRole="LaboratoryWork" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="User" ToRole="Role" />
+    <Property Name="ProfilePicture" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ControlTest" Relationship="CollegeModel.FK_ControlTest_User" FromRole="User" ToRole="ControlTest" />
+  </EntityType>
+  <Association Name="FK_LaboratoryWorks_Users">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LaboratoryWork" Type="Self.LaboratoryWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LaboratoryWork">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CollegeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LaboratoryWork" EntityType="Self.LaboratoryWork" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_LaboratoryWorks_Users" Association="Self.FK_LaboratoryWorks_Users">
+      <End Role="User" EntitySet="User" />
+      <End Role="LaboratoryWork" EntitySet="LaboratoryWork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <EntitySet Name="ControlTest" EntityType="CollegeModel.ControlTest" />
+    <AssociationSet Name="FK_ControlTest_User" Association="CollegeModel.FK_ControlTest_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ControlTest" EntitySet="ControlTest" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ControlTest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="SuccessRateTest" Type="Int32" />
+    <Property Name="DateTestEnding" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="CollegeModel.FK_ControlTest_User" FromRole="ControlTest" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_ControlTest_User">
+    <End Type="CollegeModel.User" Role="User" Multiplicity="1" />
+    <End Type="CollegeModel.ControlTest" Role="ControlTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ControlTest">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

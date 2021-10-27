@@ -1,0 +1,33 @@
+﻿<Window x:Class="NetworkHardwareEmulator.ControlLabTests.CliComPortTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkHardwareEmulator.ControlLabTests"
+        mc:Ignorable="d"
+        Title="Контрольные вопросы по «Подключение к CLI по протоколу Telnet»" Height="380" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+        <Grid>
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Margin="10" FontSize="16" TextWrapping="Wrap" Text="1.	Новая версия протокола IP, относящегося к сетевому уровню стека протоколов TCP/IP? "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Height="22" Text="Ответ: " Margin="10,0,0,0"/>
+                        <TextBox Name="FirsAnswer" Width="150" Margin="10,0,0,0" Height="22" FontSize="16"/>
+                    </StackPanel>
+                    <TextBlock Margin="10" FontSize="16" TextWrapping="Wrap" Text="2.	Можно ли подключение к CLI по протоколу Telnet выполнить непосредственно на месте установки устройства? "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Height="22" Text="Ответ: " Margin="10,0,0,0"/>
+                        <TextBox Name="SecondAnswer" Width="150" Margin="10,0,0,0" Height="22" FontSize="16"/>
+                    </StackPanel>
+                    <TextBlock Margin="10" FontSize="16" TextWrapping="Wrap" Text="3.	Можно ли подключение к CLI по протоколу Telnet выполнить с удаленного рабочего места через IP-сеть? "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Height="22" Text="Ответ: " Margin="10,0,0,0"/>
+                        <TextBox Name="ThirdAnswer" Width="150" Margin="10,0,0,0" Height="22" FontSize="16"/>
+                    </StackPanel>
+                </StackPanel>
+            <Button Click="AgreeButton_Click" Name="AgreeButton" Width="200" Background="White" BorderBrush="Black" BorderThickness="2" Height="30" Content="Подтвердить" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
+            </StackPanel>
+        </Grid>
+    
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="NetworkHardwareEmulator.Windows.CentralModule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkHardwareEmulator.Windows"
+        mc:Ignorable="d"
+        Title="Модуль центрального коммутатора MA4000PX" Height="450" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="AliceBlue">
+        <StackPanel Orientation="Horizontal">
+            <Image Name="CentralModuleImg" Width="100" Height="400" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+            <StackPanel Margin="10,0,0,0">
+                <TextBlock Text="Введите названия пронумированных элементов передней планеты: " TextWrapping="Wrap" Width="300" FontSize="16" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="1. " FontSize="16" Height="22" />
+                    <TextBox Name="FirstConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="2. " FontSize="16" Height="22" />
+                    <TextBox Name="SecondConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="3. " FontSize="16" Height="22" />
+                    <TextBox Name="ThirdConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="4. " FontSize="16" Height="22" />
+                    <TextBox Name="FourthConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="5. " FontSize="16" Height="22" />
+                    <TextBox Name="FifthConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="6. " FontSize="16" Height="22" />
+                    <TextBox Name="SixConnector" Width="200" Height="22" FontSize="16"/>
+                </StackPanel>
+                <Button Click="AgreeButton_Click" Margin="0,50,0,0" HorizontalAlignment="Center" Name="AgreeButton" Width="150" Height="30" Background="White" BorderBrush="Black" BorderThickness="2" Content="Подтвердить" FontSize="16"/>
+            </StackPanel>
+           
+        </StackPanel>
+    </Grid>
+</Window>
